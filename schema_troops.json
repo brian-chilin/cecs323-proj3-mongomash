@@ -1,0 +1,199 @@
+{
+  "$jsonSchema": {
+    "title": "troop",
+    "description": "A troop of Girl Scouts and their adult leaders.",
+    "bsonType": "object",
+    "required": [
+      "_id",
+      "founding_date",
+      "community",
+      "scouts",
+      "volunteers",
+      "allotments"
+    ],
+    "properties": {
+      "_id": {
+        "bsonType": "int"
+      },
+      "founding_date": {
+        "bsonType": "date"
+      },
+      "community": {
+        "bsonType": "string"
+      },
+      "scouts": {
+        "bsonType": "array",
+        "items": {
+          "bsonType": "object",
+          "required": [
+            "_id",
+            "firstname",
+            "lastname",
+            "birthday",
+            "gradelevel",
+            "adults",
+            "allotments"
+          ],
+          "properties": {
+            "_id": {
+              "bsonType": "objectId"
+            },
+            "firstname": {
+              "bsonType": "string"
+            },
+            "lastname": {
+              "bsonType": "string"
+            },
+            "birthday": {
+              "bsonType": "date"
+            },
+            "gradelevel": {
+              "bsonType": "string",
+              "enum": [
+                "K",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12"
+              ]
+            },
+            "adults": {
+              "bsonType": "array",
+              "items": {
+                "bsonType": "object",
+                "required": [
+                  "adultid",
+                  "firstname",
+                  "lastname"
+                ],
+                "properties": {
+                  "adultid": {
+                    "bsonType": "objectId"
+                  },
+                  "firstname": {
+                    "bsonType": "string"
+                  },
+                  "lastname": {
+                    "bsonType": "string"
+                  }
+                }
+              }
+            },
+            "allotments": {
+              "bsonType": "array",
+              "items": {
+                "bsonType": "object",
+                "required": ["deliverydate", "cookies"],
+                "properties": {
+                  "deliverydate": {
+                    "bsonType": "date"
+                  },
+                  "cookies": {
+                    "bsonType": "array",
+                    "items": {
+                      "bsonType": "object",
+                      "required": ["cookieid", "cookietype", "boxes"],
+                      "properties": {
+                        "cookieid": {
+                          "bsonType": "objectId"
+                        },
+                        "cookietype": {
+                          "bsonType": "string"
+                        },
+                        "boxes": {
+                          "bsonType": "int"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "payments": {
+              "bsonType": "array",
+              "items": {
+                "bsonType": "object",
+                "required": [
+                  "amount",
+                  "paymentdate"
+                ],
+                "properties": {
+                  "amount": {
+                    "bsonType": "decimal"
+                  },
+                  "paymentdate": {
+                    "bsonType": "date"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "volunteers": {
+        "bsonType": "array",
+        "items": {
+          "bsonType": "object",
+          "required": [
+            "adultid",
+            "firstname",
+            "lastname",
+            "position"
+          ],
+          "properties": {
+            "adultid": {
+              "bsonType": "objectId"
+            },
+            "firstname": {
+              "bsonType": "string"
+            },
+            "lastname": {
+              "bsonType": "string"
+            },
+            "position": {
+              "bsonType": "string"
+            }
+          }
+        }
+      },
+      "allotments": {
+        "bsonType": "array",
+        "items": {
+          "bsonType": "object",
+          "required": ["deliverydate", "cookies"],
+          "properties": {
+            "deliverydate": {
+              "bsonType": "date"
+            },
+            "cookies": {
+              "bsonType": "array",
+              "items": {
+                "bsonType": "object",
+                "required": ["cookieid", "cookietype", "cases"],
+                "properties": {
+                  "cookieid": {
+                    "bsonType": "objectId"
+                  },
+                  "cookietype": {
+                    "bsonType": "string"
+                  },
+                  "cases": {
+                    "bsonType": "int"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

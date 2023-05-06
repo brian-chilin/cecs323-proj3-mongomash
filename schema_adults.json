@@ -1,0 +1,56 @@
+{
+  "$jsonSchema": {
+    "bsonType": "object",
+    "required": ["_id", "firstname", "lastname", "birthday", "roles", "scouts"],
+    "properties": {
+      "_id": {
+        "bsonType": "objectId"
+      },
+      "firstname": {
+        "bsonType": "string"
+      },
+      "lastname": {
+        "bsonType": "string"
+      },
+      "birthday": {
+        "bsonType": "date"
+      },
+      "roles": {
+        "bsonType": "array",
+        "items": {
+          "bsonType": "object",
+          "required": ["troopnumber", "position"],
+          "properties": {
+            "troopnumber": {
+              "bsonType": "int"
+            },
+            "position": {
+              "bsonType": "string"
+            }
+          }
+        }
+      },
+      "scouts": {
+        "bsonType": "array",
+        "items": {
+          "bsonType": "object",
+          "required": ["scoutid", "firstname", "lastname", "troopnumber"],
+          "properties": {
+            "scoutid": {
+              "bsonType": "objectId"
+            },
+            "firstname": {
+              "bsonType": "string"
+            },
+            "lastname": {
+              "bsonType": "string"
+            },
+            "troopnumber": {
+              "bsonType": "int"
+            }
+          }
+        }
+      }
+    }
+  }
+}
