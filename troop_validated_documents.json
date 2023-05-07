@@ -1,0 +1,193 @@
+[{
+  "_id": 1234,
+  "founding_date": {
+    "$date": "2022-09-01T00:00:00.000Z"
+  },
+  "community": "Long Beach",
+  "scouts": [
+    {
+      "_id": {
+        "$oid": "645817ba444192604c4e58c2"
+      },
+      "firstname": "Naomi",
+      "lastname": "Nagata",
+      "birthday": {
+        "$date": "2017-03-03T00:00:00.000Z"
+      },
+      "gradelevel": "K",
+      "adults": [
+        {
+          "adultid": {
+            "$oid": "64582635d9ea5ff654c5a4f0"
+          },
+          "firstname": "James",
+          "lastname": "Holden"
+        }
+      ],
+      "allotments": [
+        {
+          "deliverydate": {
+            "$date": "2023-01-19T00:00:00.000Z"
+          },
+          "cookies": [
+            {
+              "cookieid": {
+                "$oid": "645817ba444192604c4e58c5"
+              },
+              "cookietype": "Thin Mints",
+              "boxes": 36
+            },
+            {
+              "cookieid": {
+                "$oid": "645817ba444192604c4e58c6"
+              },
+              "cookietype": "Samoas",
+              "boxes": 36
+            },
+            {
+              "cookieid": {
+                "$oid": "645817ba444192604c4e58c7"
+              },
+              "cookietype": "Tagalongs",
+              "boxes": 24
+            }
+          ]
+        }
+      ],
+      "payments": [
+        {
+          "paymentdate": {
+            "$date": "2023-03-01T00:00:00.000Z"
+          },
+          "amount": {
+            "$numberDecimal": "540"
+          }
+        },
+        {
+          "paymentdate": {
+            "$date": "2023-03-15T00:00:00.000Z"
+          },
+          "amount": {
+            "$numberDecimal": "24"
+          }
+        }
+      ]
+    },
+    {
+      "_id": {
+        "$oid": "645817ba444192604c4e58c1"
+      },
+      "firstname": "Grace",
+      "lastname": "Hopper",
+      "birthday": {
+        "$date": "2017-01-30T00:00:00.000Z"
+      },
+      "gradelevel": "K",
+      "adults": [
+        {
+          "adultid": {
+            "$oid": "64582635d9ea5ff654c5a4f1"
+          },
+          "firstname": "Ada",
+          "lastname": "Lovelace"
+        }
+      ],
+      "allotments": [
+        {
+          "deliverydate": {
+            "$date": "2023-01-19T00:00:00.000Z"
+          },
+          "cookies": [
+            {
+              "cookieid": {
+                "$oid": "645817ba444192604c4e58c5"
+              },
+              "cookietype": "Thin Mints",
+              "boxes": 30
+            },
+            {
+              "cookieid": {
+                "$oid": "645817ba444192604c4e58c6"
+              },
+              "cookietype": "Samoas",
+              "boxes": 20
+            },
+            {
+              "cookieid": {
+                "$oid": "645817ba444192604c4e58c7"
+              },
+              "cookietype": "Tagalongs",
+              "boxes": 10
+            }
+          ]
+        }
+      ],
+      "payments": [
+        {
+          "paymentdate": {
+            "$date": "2023-02-01T00:00:00.000Z"
+          },
+          "amount": {
+            "$numberDecimal": "360"
+          }
+        }
+      ]
+    }
+  ],
+  "volunteers": [
+    {
+      "adultid": {
+        "$oid": "6458210d78c66e39a5f6a83b"
+      },
+      "firstname": "James",
+      "lastname": "Holden",
+      "position": "Co-leader"
+    },
+    {
+      "adultid": {
+        "$oid": "6458210d78c66e39a5f6a83c"
+      },
+      "firstname": "Ada",
+      "lastname": "Lovelace",
+      "position": "Cookie Chair"
+    },
+    {
+      "adultid": {
+        "$oid": "6458210d78c66e39a5f6a83c"
+      },
+      "firstname": "Ada",
+      "lastname": "Lovelace",
+      "position": "Treasurer"
+    }
+  ],
+  "allotments": [
+    {
+      "deliverydate": {
+        "$date": "2023-01-18T00:00:00.000Z"
+      },
+      "cookies": [
+        {
+          "cookieid": {
+            "$oid": "645817ba444192604c4e58c5"
+          },
+          "cookietype": "Thin Mints",
+          "cases": 10
+        },
+        {
+          "cookieid": {
+            "$oid": "645817ba444192604c4e58c6"
+          },
+          "cookietype": "Samoas",
+          "cases": 10
+        },
+        {
+          "cookieid": {
+            "$oid": "645817ba444192604c4e58c7"
+          },
+          "cookietype": "Tagalongs",
+          "cases": 10
+        }
+      ]
+    }
+  ]
+}]
