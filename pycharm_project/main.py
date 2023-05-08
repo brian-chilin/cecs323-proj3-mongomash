@@ -8,16 +8,17 @@ def connect():
     return client['project3']
 
 def troopLookup(db: MongoClient):
-    troopInput = input("Input the number of a troop to retrieve a summary: ")
+    troopInput = input("Input Troop's number to retrieve a summary of: ")
 
     if not troopInput.isnumeric():
         print("Troop number should only contain digits")
         return
+    troopInput = int(troopInput)
 
     troopQuery = [
         {
             "$match": {
-                "_id": int(troopInput)
+                "_id": troopInput
             }
         },
         {
@@ -104,7 +105,87 @@ def scoutLookup(db: MongoClient):
         print(" (no allotments found)")
 
 def salesReport(db: MongoClient):
-    print("todo. in source code use ctrl+f to find this print statement and produce implementation")
+    troopInput = input("Input the number of a troop to retrieve a sales report: ")
+
+    if not troopInput.isnumeric():
+        print("Troop number should only contain digits")
+        return
+    troopInput = int(troopInput)
+
+    srQuery = [
+        {
+            '$match': {
+                '_id': troopInput
+            }
+        }, {
+            '$unwind': {
+                'path': '$scouts',
+                'includeArrayIndex': 'string',
+                'preserveNullAndEmptyArrays': False
+            }
+        }, {
+            '$unwind': {
+                'path': '$scouts.allotments',
+                'includeArrayIndex': 'string',
+                'preserveNullAndEmptyArrays': False
+            }
+        }, {
+            '$unwind': {
+                'path': '$scouts.allotments.cookies',
+                'includeArrayIndex': 'string',
+                'preserveNullAndEmptyArrays': False
+            }
+        }, {
+            '$lookup': {
+                'from': 'cookietypes',
+                'localField': 'scouts.allotments.cookies.cookieid',
+                'foreignField': '_id',
+                'as': 'cookie'
+            }
+        }, {
+            '$unwind': {
+                'path': '$cookie',
+                'includeArrayIndex': 'string',
+                'preserveNullAndEmptyArrays': False
+            }
+        }, {
+            '$project': {
+                'scouts': 1,
+                'cookie': 1,
+                'totalvalue': {
+                    '$multiply': [
+                        '$scouts.allotments.cookies.boxes', '$cookie.price'
+                    ]
+                }
+            }
+        }, {
+            '$group': {
+                '_id': '$scouts._id',
+                'firstname': {
+                    '$min': '$scouts.firstname'
+                },
+                'lastname': {
+                    '$min': '$scouts.lastname'
+                },
+                'totalvalue': {
+                    '$sum': '$totalvalue'
+                }
+            }
+        }, {
+            '$project': {
+                'firstname': 1,
+                'lastname': 1,
+                'totalvalue': 1
+            }
+        }
+    ]
+
+    result = list(db["troops"].aggregate(srQuery))
+    for scout in result:
+        print(scout['firstname'] + ' ' + scout['lastname'] + '\n   Total Value: ' + str(scout['totalvalue']))
+    if not result:
+        print("(no scouts to show)")
+
 
 if __name__ == "__main__":
 
