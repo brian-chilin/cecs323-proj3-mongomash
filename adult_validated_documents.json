@@ -1,0 +1,111 @@
+[{
+  "_id": {
+    "$oid": "64582635d9ea5ff654c5a4f0"
+  },
+  "firstname": "James",
+  "lastname": "Holden",
+  "birthday": {
+    "$date": "1992-06-04T00:00:00.000Z"
+  },
+  "roles": [
+    {
+      "troopnumber": 1234,
+      "position": "Co-leader"
+    }
+  ],
+  "scouts": [
+    {
+      "scoutid": {
+        "$oid": "645817ba444192604c4e58c2"
+      },
+      "firstname": "Naomi",
+      "lastname": "Nagata",
+      "troopnumber": 1234
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "64582635d9ea5ff654c5a4f1"
+  },
+  "firstname": "Ada",
+  "lastname": "Lovelace",
+  "birthday": {
+    "$date": "1990-10-10T00:00:00.000Z"
+  },
+  "roles": [
+    {
+      "troopnumber": 1234,
+      "position": "Treasurer"
+    },
+    {
+      "troopnumber": 1234,
+      "position": "Cookie Chair"
+    },
+    {
+      "troopnumber": 6789,
+      "position": "Co-leader"
+    }
+  ],
+  "scouts": [
+    {
+      "scoutid": {
+        "$oid": "645817ba444192604c4e58c1"
+      },
+      "firstname": "Grace",
+      "lastname": "Hopper",
+      "troopnumber": 1234
+    },
+    {
+      "scoutid": {
+        "$oid": "6458313489e7ddd9b17a764f"
+      },
+      "firstname": "Barbara",
+      "lastname": "Liskov",
+      "troopnumber": 6789
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "64582635d9ea5ff654c5a4f3"
+  },
+  "firstname": "Lord",
+  "lastname": "Byron",
+  "birthday": {
+    "$date": {
+      "$numberLong": "-146361600000"
+    }
+  },
+  "roles": [],
+  "scouts": [
+    {
+      "scoutid": {
+        "$oid": "6458313489e7ddd9b17a764f"
+      },
+      "firstname": "Barbara",
+      "lastname": "Liskov",
+      "troopnumber": 1234
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "64582635d9ea5ff654c5a4f4"
+  },
+  "firstname": "Mary",
+  "lastname": "Jackson",
+  "birthday": {
+    "$date": {
+      "$numberLong": "-536457600000"
+    }
+  },
+  "roles": [],
+  "scouts": [
+    {
+      "scoutid": {
+        "$oid": "64583141f7aab77ccc5f0daa"
+      },
+      "firstname": "Mary",
+      "lastname": "Sparck Jones",
+      "troopnumber": 1234
+    }
+  ]
+}]
