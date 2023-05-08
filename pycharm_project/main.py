@@ -52,6 +52,54 @@ def troopLookup(db: MongoClient):
         print(volunteer['firstname'] + ' ' + volunteer['lastname'], end='')
     print() # since for loop ended without a newline
 
+def scoutLookup(db: MongoClient):
+    # firstname & lastname
+    fnInput = input("First name (caps matter): ")
+    lnInput = input("Last name  (caps matter): ")
+
+    scoutQuery = [
+        {
+            '$unwind': {
+                'path': '$scouts',
+                'includeArrayIndex': 'string',
+                'preserveNullAndEmptyArrays': False
+            }
+        }, {
+            '$match': {
+                'scouts.firstname': fnInput,
+                'scouts.lastname': lnInput
+            }
+        }, {
+            '$project': {
+                'founding_date': 0,
+                'community': 0,
+                'volunteers': 0
+            }
+        }
+    ]
+
+    result = list(db["troops"].aggregate(scoutQuery))
+    if not result:
+        print(fnInput + " " + lnInput + " not found")
+        return
+    result = result[0]['scouts']
+    print(result)
+
+    print("Detailed view for " + result['firstname'] + ' ' + result['lastname'] + ':')
+    print("Birthday: " + str(result['birthday'].date()))
+    print("Grade level: " + result['gradelevel'])
+    print("Adults: ")
+    for adult in result['adults']:
+        print("  -" + adult['firstname'] + ' ' + adult['lastname'])
+    print("Allotments: ")
+    for allotment in result['allotments']:
+        print("  -" + str(allotment['deliverydate'].date()))
+        for cookies in allotment['cookies']:
+            print("    •" + str(cookies['boxes']) + " boxes of " + cookies['cookietype'])
+
+def salesReport(db: MongoClient):
+    print("todo. in source code use ctrl+f to find this print statement and produce implementation")
+
 if __name__ == "__main__":
 
     db = connect()
@@ -78,8 +126,10 @@ if __name__ == "__main__":
             troopLookup(db)
             print()
         elif choice == '2':
-            print(2)
+            scoutLookup(db)
+            print()
         elif choice == '3':
-            print(3)
+            salesReport(db)
+            print()
         elif choice == 'q':
             break;
