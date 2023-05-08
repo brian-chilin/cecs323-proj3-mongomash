@@ -36,7 +36,7 @@ def troopLookup(db: MongoClient):
         print("Troop #" + str(troopInput) + " not found")
         return
     result = result[0]
-    print(result)
+    #print(result)
     print("Overview for Troop #" + str(result['_id']) + ":")
     print("Founded: " + str(result['founding_date'].date()))
     print("Community: " + result['community'])
@@ -84,7 +84,7 @@ def scoutLookup(db: MongoClient):
         print(fnInput + " " + lnInput + " not found")
         return
     result = result[0]['scouts']
-    print(result)
+    #print(result)
 
     print("Detailed view for " + result['firstname'] + ' ' + result['lastname'] + ':')
     print("Birthday: " + str(result['birthday'].date()))
@@ -184,7 +184,7 @@ def salesReport(db: MongoClient):
     for scout in result:
         print(scout['firstname'] + ' ' + scout['lastname'] + '\n   Total Value: ' + str(scout['totalvalue']))
     if not result:
-        print("(no scouts to show)")
+        print("(no scouts to show or troop not found)")
 
 
 if __name__ == "__main__":
