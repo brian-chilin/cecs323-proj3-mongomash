@@ -32,7 +32,7 @@ def troopLookup(db: MongoClient):
     ]
     result = list(db["troops"].aggregate(troopQuery))
     if not result:
-        print("No Troop found with that number")
+        print("Troop #" + str(troopInput) + " not found")
         return
     result = result[0]
     print(result)
@@ -88,14 +88,20 @@ def scoutLookup(db: MongoClient):
     print("Detailed view for " + result['firstname'] + ' ' + result['lastname'] + ':')
     print("Birthday: " + str(result['birthday'].date()))
     print("Grade level: " + result['gradelevel'])
+
     print("Adults: ")
     for adult in result['adults']:
         print("  -" + adult['firstname'] + ' ' + adult['lastname'])
+    if not result['adults']:
+        print(" (no adults found)")
+
     print("Allotments: ")
     for allotment in result['allotments']:
         print("  -" + str(allotment['deliverydate'].date()))
         for cookies in allotment['cookies']:
-            print("    •" + str(cookies['boxes']) + " boxes of " + cookies['cookietype'])
+            print("     •" + str(cookies['boxes']) + " boxes of " + cookies['cookietype'])
+    if not result['allotments']:
+        print(" (no allotments found)")
 
 def salesReport(db: MongoClient):
     print("todo. in source code use ctrl+f to find this print statement and produce implementation")
